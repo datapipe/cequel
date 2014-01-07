@@ -305,7 +305,8 @@ module Cequel
     #
     class Timestamp < Base
       def internal_name
-        'org.apache.cassandra.db.marshal.DateType'
+        # 'org.apache.cassandra.db.marshal.DateType'
+        'org.apache.cassandra.db.marshal.TimestampType'
       end
 
       def cast(value)

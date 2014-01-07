@@ -2,3 +2,9 @@
 doc
 *.gem
 tags
+#
+# jetbrains suggests ignoring _only_ these 2 files in git.
+#
+/.idea/workspace.xml
+/.idea/tasks.xml
+

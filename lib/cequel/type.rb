@@ -304,8 +304,12 @@ module Cequel
     # data, and all input times are cast to UTC before being stored.
     #
     class Timestamp < Base
+
+      def cql_aliases
+        [:date,:datetime]
+      end
+
       def internal_name
-        # 'org.apache.cassandra.db.marshal.DateType'
         'org.apache.cassandra.db.marshal.TimestampType'
       end
 

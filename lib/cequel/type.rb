@@ -310,10 +310,20 @@ module Cequel
       end
 
       def cast(value)
-        if ::String === value then Time.parse(value)
+        if ::String === value
+          if value.bytesize == 8 && !(value =~ /^[a-z:\/\-0-9 ]+$/i)
+            Time.at( value.unpack('Q>')[0] / 1000.0 )
+          else
+            Time.parse(value)
+          end
         elsif value.respond_to?(:to_time) then value.to_time
         elsif Numeric === value then Time.at(value)
-        else Time.parse(value.to_s)
+        else
+          if value.to_s.bytesize == 8 && !(value.to_s =~ /^[a-z:\/\-0-9 ]+$/i)
+            Time.at( value.to_s.unpack('Q>')[0] / 1000.0 )
+          else
+            Time.parse(value.to_s)
+          end
         end.utc
       end
     end

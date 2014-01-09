@@ -450,7 +450,7 @@ module Cequel
       NON_ATOMIC_MUTATORS.
         each { |method| undef_method(method) if method_defined? method }
 
-      def self.empty; {}; end
+      def self.empty; []; end
 
       #
       # Set the value of a given key

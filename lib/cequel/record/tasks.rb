@@ -2,7 +2,7 @@ namespace :cequel do
   namespace :keyspace do
     desc 'Initialize Cassandra keyspace'
     task :create => :environment do
-      Cequel::Record.connection.schema.create!
+      Cequel::Record.connection.schema.create
       puts "Created keyspace #{Cequel::Record.connection.name}"
     end
 
